@@ -13,8 +13,7 @@ public class Player : MonoBehaviour
     private float hp;
     [SerializeField]
     private float speed;
-    [SerializeField]
-    private FixedJoystick joystick;
+    
     [SerializeField]
     private GameObject magicBall;
     [SerializeField]
@@ -37,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        moveDirection = joystick.Direction;
+
         if (moveDirection != Vector2.zero)
         {
             transform.Translate(moveDirection*speed*Time.deltaTime);
