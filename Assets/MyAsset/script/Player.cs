@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-
+        moveDirection = GetMoveDiretion();
         if (moveDirection != Vector2.zero)
         {
             transform.Translate(moveDirection*speed*Time.deltaTime);
@@ -44,9 +44,21 @@ public class Player : MonoBehaviour
             
             Aim();
         }
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Attack();
+        }
     }
-    
+
+    private Vector2 GetMoveDiretion()
+    {
+        Vector2 dir;
+        dir.x = Input.GetAxis("Horizontal");
+        dir.y = Input.GetAxis("Vertical");
+        return dir;
+    }
+
+
     private void Aim()
     {
         Vector2 aimDirection = new Vector2 (transform.position.x, transform.position.y) + moveDirection;       
